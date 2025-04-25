@@ -1,0 +1,6 @@
+{
+  "demo": [
+    {"face_id": "F123", "rule": "min-wall", "value": 1.0},
+    {"face_id": "F456", "rule": "hole-edge", "value": 3.0}
+  ]
+}

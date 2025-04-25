@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+client/node_modules/
+client/build/
+
+# .NET build outputs
+solidworks-addin/BorzoAddin/bin/
+solidworks-addin/BorzoAddin/obj/
+*.user
+*.suo
+
+# IDE
+.vscode/
+.idea/
+backend/.env

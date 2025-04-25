@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>BorzoAddin</AssemblyName>
+    <RootNamespace>BorzoAddin</RootNamespace>
+    <OutputType>Library</OutputType>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- These references must be added in Visual Studio on Windows: -->
+    <!--
+    <Reference Include="SolidWorks.Interop.sldworks" />
+    <Reference Include="SolidWorks.Interop.swconst" />
+    -->
+    <Compile Include="BorzoAddin.cs" />
+    <Compile Include="TaskPaneHost.cs" />
+    <Compile Include="BorzoTaskPaneControl.cs" />
+    <Compile Include="CommunicationBridge.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+</Project>

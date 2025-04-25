@@ -1,0 +1,314 @@
+/* ---  Shadcn/ui compatible styles --- */
+
+body, html {
+  background: #0a0a0a;
+  color: #fff;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  background: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  height: 100vh;
+}
+
+.split-panel {
+  background: linear-gradient(135deg, #101216 0%, #23272f 100%);
+  border-radius: 20px 0 0 20px;
+  width: 410px;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border: 1.5px solid #23272f;
+  overflow: visible;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.upper-panel, .lower-panel {
+  padding-left: 24px;
+  padding-right: 24px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.upper-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  overflow: hidden; /* bound the panel so chat-window scrolls internally */
+  min-height: 0;
+  padding-top: 22px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #23272f;
+  background: transparent;
+}
+
+.lower-panel {
+  flex-shrink: 0;
+  background: #13151a;
+  padding: 18px 24px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 0 18px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.chat-window {
+  flex: 1 1 0;
+  height: 0;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: 100%;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+  min-height: 0;
+  scrollbar-width: none; /* Hide scrollbar on Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chat-window::-webkit-scrollbar {
+  display: none; /* Hide scrollbar on Chrome/Safari */
+}
+
+.chat-user {
+  background: #181c22;
+  color: #f3f3f3;
+  padding: 10px 16px;
+  border-radius: 10px 10px 4px 10px;
+  align-self: flex-end;
+  font-size: 1em;
+  box-shadow: none !important;
+  max-width: 80%;
+  word-break: break-word;
+  border: 1.5px solid #23272f;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.chat-borzo {
+  background: #181c22;
+  color: #f3f3f3;
+  border-radius: 10px 10px 4px 10px;
+  padding: 10px 16px;
+  align-self: flex-start;
+  font-size: 1em;
+  border-left: 3px solid #fff;
+  max-width: 80%;
+  word-break: break-word;
+  border: 1.5px solid #23272f;
+  box-shadow: none !important;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  margin-bottom: 4px;
+  color: #c8d1e1;
+  min-height: 22px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: stretch;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-input-row input,
+.chat-input-row .shadcn-input {
+  background: #181c22;
+  color: #f3f3f3;
+  border: 2px solid #fff;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  font-size: 1.06em;
+  padding: 0.95rem 1.1rem;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  letter-spacing: 0.01em;
+  outline: none;
+  box-shadow: none !important;
+  transition: border 0.17s, background 0.17s;
+}
+
+.chat-send-btn {
+  background: linear-gradient(90deg, #22252b 0%, #16181c 100%);
+  color: #f3f3f3;
+  font-weight: 700;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid #fff;
+  border-left: none;
+  font-size: 1.06em;
+  letter-spacing: 0.09em;
+  padding: 0.95rem 2.1rem;
+  box-shadow: none !important;
+  text-transform: uppercase;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  transition: background 0.17s, color 0.17s, border 0.17s;
+  outline: none;
+  
+  margin-left: -2px;
+}
+
+.chat-input-row input:focus,
+.chat-input-row .shadcn-input:focus {
+  background: #181c22;
+  border: 2px solid #fff;
+}
+
+.chat-send-btn:active,
+.chat-send-btn:focus {
+  background: #23272f;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.chat-send-btn:disabled {
+  background: #191b20;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.param-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.param-table td {
+  background: #181c22;
+  color: #fff;
+  padding: 7px 12px;
+  border-bottom: 1px solid #23272f;
+  font-size: 0.97em;
+}
+
+.param-table tr:last-child td {
+  border-bottom: none;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.action-buttons button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  background: #fff;
+  color: #111;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.action-buttons button:hover {
+  filter: brightness(1.12);
+}
+
+.prop-options {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.prop-options button {
+  background: #181c22;
+  color: #fff;
+  border: 1.5px solid #23272f;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.prop-options button:hover {
+  background: #23272f;
+  border-color: #fff;
+}
+
+h4 {
+  color: #fff;
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #181818;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Sora', 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: #181818;
+}

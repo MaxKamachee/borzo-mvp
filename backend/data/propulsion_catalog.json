@@ -1,0 +1,6 @@
+{
+  "options": [
+    {"name": "T-Motor 2820", "thrust_g": 900, "mass_g": 85, "step_file": "t-motor-2820.step"},
+    {"name": "Emax 2216", "thrust_g": 700, "mass_g": 65, "step_file": "emax-2216.step"}
+  ]
+}
