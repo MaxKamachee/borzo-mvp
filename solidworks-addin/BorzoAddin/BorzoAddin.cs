@@ -4,6 +4,7 @@ using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using SolidWorks.Interop.swpublished;
 
 namespace BorzoAddin
 {
