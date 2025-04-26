@@ -76,6 +76,18 @@ function App() {
     });
     const classifyData = await classifyRes.json() as { intent: string; params: any; agent_response: string };
 
+    // return early on plain chat or help to avoid duplicate echo/instructions
+    if (classifyData.intent === 'chat' || classifyData.intent === 'help') {
+      setChat(c => [...c, { sender: 'borzo', text: classifyData.agent_response }]);
+      await fetch('http://localhost:8000/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sender: 'borzo', text: classifyData.agent_response })
+      });
+      setLoading(false);
+      return;
+    }
+
     // show agent's summary
     setChat(c => [...c, { sender: 'borzo', text: classifyData.agent_response }]);
     await fetch('http://localhost:8000/log', {

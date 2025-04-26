@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Profile 1": {
+      "commandName": "Project"
+    },
+    "Profile 2": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\mkamachee\\Documents\\SOLIDWORKS Downloads\\SOLIDWORKS 2025 SP01.2\\swwi\\data\\solidworks.msi"
+    }
+  }
