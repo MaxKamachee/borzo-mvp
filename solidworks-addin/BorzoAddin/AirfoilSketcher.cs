@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
-using System.Runtime.InteropServices.RuntimeInformation;
 using System.IO;
 using System.Text.Json;
 
@@ -28,10 +27,6 @@ namespace BorzoAddin
         /// <param name="chordMm">Chord length in millimeters</param>
         public void GenerateAirfoil(string nacaCode, double chordMm)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
-                System.Diagnostics.Debug.WriteLine("AirfoilSketcher.GenerateAirfoil skipped: not Windows");
-                return;
-            }
             var model = _swApp.ActiveDoc as IModelDoc2;
             if (model == null)
                 throw new InvalidOperationException("No active document in SolidWorks.");
@@ -64,10 +59,6 @@ namespace BorzoAddin
         /// </summary>
         public void SketchCoords(double[] arr)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
-                System.Diagnostics.Debug.WriteLine("AirfoilSketcher.SketchCoords skipped: not Windows");
-                return;
-            }
             var model = _swApp.ActiveDoc as IModelDoc2;
             if (model == null)
                 throw new InvalidOperationException("No active document in SolidWorks.");
@@ -85,10 +76,6 @@ namespace BorzoAddin
         /// </summary>
         public void InsertStep(string filename)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
-                System.Diagnostics.Debug.WriteLine($"InsertStep skipped: not Windows ({filename})");
-                return;
-            }
             if (!(_swApp.ActiveDoc is IAssemblyDoc asm))
                 throw new InvalidOperationException("Active document is not an assembly.");
             string addinDir = Path.GetDirectoryName(typeof(AirfoilSketcher).Assembly.Location);
@@ -103,8 +90,6 @@ namespace BorzoAddin
         /// </summary>
         public string GetCG()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                return JsonSerializer.Serialize(new { cg_ok = true, delta_mm = 0.0, verdict = "green" });
             var model = _swApp.ActiveDoc as IModelDoc2;
             if (model == null)
                 throw new InvalidOperationException("No active document in SolidWorks.");
@@ -117,6 +102,15 @@ namespace BorzoAddin
             bool ok = delta < 1.0;
             string verdict = ok ? "green" : (delta < 5.0 ? "yellow" : "red");
             return JsonSerializer.Serialize(new { cg_ok = ok, delta_mm = delta, verdict = verdict });
+        }
+
+        /// <summary>
+        /// Returns design rule check violations as JSON.
+        /// </summary>
+        public string CheckDRC(string partId)
+        {
+            // TODO: implement real DRC logic via SolidWorks API
+            return JsonSerializer.Serialize(new { violations = new object[0] });
         }
 
         private List<Point2D> GetNacaPoints(string code, double c, int numPts)

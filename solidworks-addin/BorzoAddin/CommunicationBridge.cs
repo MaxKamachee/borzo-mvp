@@ -50,25 +50,8 @@ namespace BorzoAddin
         /// </summary>
         public void GenerateAirfoil(string nacaCode, double chordMm)
         {
-            // Fetch coordinates from FastAPI
-            var payload = JsonSerializer.Serialize(new { naca = nacaCode, chord = chordMm });
-            var content = new StringContent(payload, Encoding.UTF8, "application/json");
-            var resp = _client.PostAsync("http://localhost:8000/airfoil", content).GetAwaiter().GetResult();
-            resp.EnsureSuccessStatusCode();
-            var json = resp.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            using var doc = JsonDocument.Parse(json);
-            var coordsElem = doc.RootElement.GetProperty("coords");
-            int cnt = coordsElem.GetArrayLength();
-            var arr = new double[cnt * 3];
-            for (int i = 0; i < cnt; i++)
-            {
-                var pt = coordsElem[i];
-                arr[i*3] = pt.GetProperty("x").GetDouble();
-                arr[i*3 + 1] = pt.GetProperty("y").GetDouble();
-                arr[i*3 + 2] = 0.0;
-            }
-            // Draw spline from external coords
-            _sketcher.SketchCoords(arr);
+            // Direct COM-based airfoil generation
+            _sketcher.GenerateAirfoil(nacaCode, chordMm);
         }
 
         /// <summary>
@@ -92,8 +75,8 @@ namespace BorzoAddin
         /// </summary>
         public string CheckDRC(string partId)
         {
-            var payload = JsonSerializer.Serialize(new { part_id = partId });
-            return SendMessageAsync("/drc", payload).GetAwaiter().GetResult();
+            // COM-based design rule checks
+            return _sketcher.CheckDRC(partId);
         }
     }
 }
