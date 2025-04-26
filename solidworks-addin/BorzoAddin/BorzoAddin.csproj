@@ -21,6 +21,10 @@
       <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.swconst.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished">
+      <HintPath>C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist\SolidWorks.Interop.swpublished.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Compile Include="BorzoAddin.cs" />
     <Compile Include="TaskPaneHost.cs" />
     <Compile Include="BorzoTaskPaneControl.cs" />
